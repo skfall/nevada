@@ -1,27 +1,18 @@
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-import * as Env from '../environment';
+import * as Env from '../env';
 
 @Injectable()
-
 export class ApiService {
 
-  constructor(private Http: Http) { }
+  constructor(private Http: Http) {
+    console.log(Env.RS);
+  }
 
   ApiConnect () {
-  	let headers = new Headers({
-  		'Access-Control-Allow-Origin': '*',
-  		'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-    	'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
-    	'Access-Control-Allow-Credentials': true 
-	});
-	let options = new RequestOptions({
-		headers: headers
-	});
-
-  	this.Http.get("http://localhost/nevada/api/?action=api_test", options).subscribe(x => {
-  		alert(2);
+  	this.Http.post("http://localhost/nevada/api/", {action: "api_test"}).subscribe(x => {
   		console.log(x.json());
+
   	});
   }
 
