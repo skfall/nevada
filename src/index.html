@@ -5,10 +5,50 @@
   <title>Nevada</title>
   <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="images/DB_16х16.png">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Nevada admin panel">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,100,700,900' rel='stylesheet'
+          type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="assets/css/lib/getmdl-select.min.css">
+    <link rel="stylesheet" href="assets/css/lib/nv.d3.css">
+    <link rel="stylesheet" href="assets/css/application.css">
 </head>
 <body>
-  <app-root><center><h1>Loading</h1></center></app-root>
+  <div >
+    <app-root class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header is-small-screen">
+      <center>
+          <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+      </center>
+    </app-root>
+  </div>
+
+
+  <script src="assets/js/d3.js"></script>
+  <script src="assets/js/getmdl-select.min.js"></script>
+  <script src="assets/js/material.js"></script>
+  <script src="assets/js/nv.d3.js"></script>
+  <script src="assets/js/widgets/employer-form/employer-form.js"></script>
+  <script src="assets/js/widgets/line-chart/line-chart-nvd3.js"></script>
+  <!-- <script src="assets/js/widgets/map/maps.js"></script> -->
+  <script src="assets/js/widgets/pie-chart/pie-chart-nvd3.js"></script>
+  <script src="assets/js/widgets/table/table.js"></script>
+  <script src="assets/js/widgets/todo/todo.js"></script>
 </body>
 </html>

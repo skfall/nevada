@@ -1,41 +1,42 @@
 import { Component, ViewChild, Output, Input } from '@angular/core';
-
+import { Injectable } from '@angular/core';
 import * as Env from '../../env';
 import { ApiService } from './../../services/api.service';
 import { RefService } from './../../services/ref.service';
-
+import { Renderer } from './../../renderer';
 
 @Component({
   selector: 'app-content',
-  templateUrl: './content.component.html'
+  templateUrl: './content.component.html',
+  providers: [Renderer]
 })
+
 export class ContentComponent {
-	constructor(private ApiService: ApiService, protected Ref: RefService){
+	constructor(private ApiService: ApiService, protected Ref: RefService, public R : Renderer){
 		this.title = "CONTENT";
 	}
 
-	@ViewChild("mainForm") MainForm;
+	@ViewChild("content_target") content_target;
 
-	HtmlRenderer (data) {
-		console.log(data);
-		let html = "";
-		switch (data.name) {
-			case "input":
-				html = "<input type='"+ data.type +"' value='"+data.value+"'></br>";	
-				break;
-			default:
-				break;
-		}
-		return html;
-	}
+
 	counter:number = 0;
+
+	ngOnInit() {
+    	this.Ref.loaded_content.subscribe(x => {
+	    	if (x == 1) {
+	    		this.PrintData();
+	    	}
+    	})
+    	this.title = "NAV";
+  	}
 
 	PrintData(){
 		let response = this.ApiService.ApiConnect().subscribe(x => {
 			let y = x.json();
+			this.content_target.nativeElement.innerHTML = "";
 			for(let i in y){
-				let element = this.HtmlRenderer(y[i]);
-				this.MainForm.nativeElement.innerHTML += element;				
+				let element = this.R.Render(y[i]);
+				this.content_target.nativeElement.innerHTML += element;				
 			}
 			this.counter++;
 			this.Ref.changeMessage("Refreshed " + this.counter);

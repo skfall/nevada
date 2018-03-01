@@ -4,7 +4,7 @@ import { RefService } from './../../services/ref.service';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
+  templateUrl: './nav.component.html'
 })
 
 
@@ -13,6 +13,10 @@ export class NavComponent implements OnInit {
 
 	constructor(protected ref: RefService){
 
+	}
+
+	PrintNavPage(p: number){
+		this.ref.loadPage(p);
 	}
 
 	ngOnInit() {

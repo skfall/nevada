@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
+
 // COMPONENTS
 import { AppComponent } from './components/app.component';
 import { NavComponent } from './components/nav/nav.component';

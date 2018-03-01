@@ -1,25 +1,51 @@
 <?php 
 
 class Input {
-	public $name = "input";
+	public function __constructor($properties){
+		foreach ($properties as $property => $value) {
+	        $this->$property = $value;
+	    }
+	}
+	public $relation = "input";
+
+	public $name = "";
 	public $type = "text";
-	public $value = "0";
+	public $value = "";
 	public $id = "";
-	public $class = "default_input";
+	public $class = ["default_i"];
+}
+
+class Table {
+	public function __constructor($properties){
+		foreach ($properties as $property => $value) {
+	        $this->$property = $value;
+	    }
+	}
+	public $relation = "table";
+
+	public $id = "";
+	public $class = ["default_t"];
+	public $cols = [];
+	public $rows = [];
 }
 
 
-$users = array(array('id' => 1, 'name' => 'Serega'));
+
+$users = array(array('id' => 1, 'name' => 'Serega'), array('id' => 1, 'name' => 'Valera'));
 
 $response = [];
-foreach ($users as $i => $user) {
-	$input = new Input();
-	$input->type = "text";
-	$input->value = $user["name"];
-	$input->id = "user_".$user["id"];
+// foreach ($users as $i => $user) {
+// 	$response[$i] = new Input(['type' => "text", "value" => $user["name"], "name" => "user", "id" => "user_".$user["id"]]);
+// }
+$tbl = new Table(['class' => ['class1', 'class2']]);
+$tbl->rows = $users;
+$tbl->cols = ['id', 'name'];
 
-	$response[$i] = $input;
-}
+
+
+array_push($response, $tbl);
+
+
 
 $response = json_encode($response);
 
