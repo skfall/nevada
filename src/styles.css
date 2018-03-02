@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+app-controls {display: none;}
+app-tools {display: none;}
+app-footer {display: none;}
+app-nav .mdl-layout__drawer {transform: translateX(0);}
+app-content {display: flex; height: 100%;}
+app-content .mdl-layout__content {margin-left: 236px;}
